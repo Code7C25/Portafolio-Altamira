@@ -1,103 +1,81 @@
 /*Estilos de la seccion de proyectos*/
 .proyectos{
-    width: 80%; /*ancho del contenedor*/    
-    background: var(--fondo-proyectos); /*color de fondo*/    
-    
+    width: 100%;
+    background: var(--fondo-proyectos);
+    box-sizing: border-box;
+    padding: 0 1rem;
 }
-/*contenedor general que engloba los proyectos*/
- .galeria-proyectos{
+
+.galeria-proyectos{
     display: flex;
-    flex-wrap: wrap; /*envuelve los elementos*/
-    gap: 1rem; /*espacio entre los elementos*/
-    justify-content: center; /*centra el contenido*/    
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
-/*Como es el contenedor de cada proyecto*/
+
 .proyecto{
-    background-color: rgb(25, 1, 48); /*color de fondo de la tarjeta*/
-    border: 1px solid #45275d; /*borde de la tarjeta*/
-    border-radius: 5px; /*bordes redondeados*/
-    padding: 15px; /*espacio interno*/
-    margin: 0 0 2rem; /*margen*/
-    width: calc(33% - 40px); /*ancho de la tarjeta*/
-    box-shadow: 1px 2px 5px #af9fb6; /*sombra*/
-    text-align: center; /*alineacion del texto*/
-   
+    background-color: rgb(25, 1, 48);
+    border: 1px solid #45275d;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 0 0 2rem;
+    width: calc(100% - 2rem);
+    box-shadow: 1px 2px 5px #af9fb6;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-
-/*imagen del proyecto*/
 .proyectos img{
-    width: 100%; /*ancho de la imagen*/
-    height: auto; /*alto de la imagen*/
-    border-radius: 5px; /*bordes redondeados*/
-    transition: transform 0.3s ease; /* Transición suave */
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
 }
+
 .proyectos img:hover {
-    transform: scale(1.05); /* Efecto de zoom en la imagen */
+    transform: scale(1.05);
 }
 
-/*titulo del proyecto*/
 .proyectos h3{
-    margin-top: 10px; /* Margen superior */
-    font-size: 1.4rem; /* Tamaño de la fuente */
-    color: var(--highlight-color); /* Color de acento */
+    margin-top: 10px;
+    font-size: 1.4rem;
+    color: var(--highlight-color);
 }
-/*descripcion del proyecto*/
+
 .proyectos p{
-    margin-top: 10px 0; /* Margen superior e inferior */
+    margin: 10px 0;
     font-size: 1rem;
-    color: #eaeaea; /* Color claro para el texto */
+    color: #eaeaea;
 }
 
-/*boton de enlaces ancor*/
 .proyectos a{
-    display: inline-block; /*bloque en linea*/
-    margin-top: 10px; /*margen superior*/
-    padding: 10px 15px; /*espacio interno*/
-    background: #3f2962; /*color de fondo*/
-    color: #fff; /*color de la fuente*/
-    border-radius: 5px; /*bordes redondeados*/
-    font-size: 1.1rem; /* Tamaño de la fuente */
-    letter-spacing: 1px; /* Espaciado entre letras */
-    transition: background 0.3s ease, transform 0.3s ease; /* Efectos de transición */
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #3f2962;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
-/*boton al pasar el mouse*/
+
 .proyectos a:hover{
-    background: #683899; /*color de fondo al pasar el mouse*/
-    transform: translateY(-5px); /* Efecto de desplazamiento al pasar el mouse */
+    background: #683899;
+    transform: translateY(-5px);
 }
 
-/*Responsive design*/
-/* Media Queries agrupadas */
-/* Pantallas pequeñas (móviles) */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .proyecto {
-        width: calc(100% - 40px); /* Ancho de la tarjeta */
-    }
-
-    .proyectos h3 {
-        font-size: 1.2rem; /* Ajustar tamaño de fuente para móviles */
+        width: calc(50% - 2rem);
     }
 }
 
-/* Pantallas medianas (tablets) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .proyecto {
-        width: calc(50% - 40px); /* Ancho de la tarjeta */
-    }
-
-    .proyectos h3 {
-        font-size: 1.3rem; /* Ajustar tamaño de fuente */
-    }
-}
-
-/* Pantallas grandes (desktops) */
 @media (min-width: 1024px) {
     .proyecto {
-        width: calc(33% - 40px); /* Ancho de la tarjeta */
-    }
-
-    .proyectos h3 {
-        font-size: 1.4rem; /* Ajustar tamaño de fuente */
+        width: calc(33.333% - 2rem);
     }
 }

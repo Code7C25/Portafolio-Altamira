@@ -1,127 +1,330 @@
-/*Variables CSS*/
+/* ===== VARIABLES ===== */
 :root {
-    --body-bg-color: #000000; /*color de fondo*/
-    --text-color: #ffffff; /*color de la fuente*/
-    --colorh1-color: #f5f5f5; /*color de la fuente*/
-    --fondo-proyectos: #000000; /*color de fondo de la tarjeta*/
-    --btn-bg-color: #1a1919; /*color de fondo de los botones*/
-    --btn-hover-bg-color: #333333; /* Sombra más clara en los botones */
-    --highlight-color: #5f069a; /*color de resaltado*/
+    --color-primario: #facdf2;
+    --color-texto: #2d2d2d;
+    --color-titulos: #1a1a1a;
+    --color-botones: #1c6e5d;
+    --color-botones-hover: #145848;
+    --color-acento: #5f069a;
+    --color-fondo-oscuro: #121212;
+    --color-texto-oscuro: #f0f0f0;
+    --sombra: 0 4px 6px rgba(0,0,0,0.1);
 }
-/*aplicar las variables CSS creadas por el root*/
 
-body {
-    display: flex; /*flexbox - parte4*/
-    flex-direction: column; /*direccion de los elementos -parte4 */
-    background: var(--body-bg-color); /*color de fondo*/
-    color: var(--text-color); /*color de la fuente*/
-    font-family: 'Segoe', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ===== RESET ===== */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-h1,h2{
-    color: var(--colorh1-color); /*color de los títulos*/
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
-/*
+
 body {
-    background: #000000;
-    color: #fff; 
-    font-family: 'Segoe', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-}*/
-
-/* estilo de la barra de navegacion*/
-a {
-    text-decoration: none;
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease; /* Agregar transición suave */
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--color-primario);
+    color: var(--color-texto);
+    line-height: 1.6;
+    transition: all 0.4s ease;
 }
 
-a:hover {
-    color: var(--highlight-color); /* Resaltar al pasar el cursor */
+body.dark-mode {
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-oscuro);
 }
 
-/*Titulo del header*/
-.titulo {
-    display: flex; /* Flexbox */
-    margin: 3rem; /* Margen superior e inferior */
-    justify-content: center; /* Centrado en pantallas pequeñas */
-}
-
-/*barra de navegacion*/
-.navigation {
-    display: flex; /*flexbox*/
-    gap: 3rem; /*espacio entre los elementos*/
-    list-style: none; /*quita los puntos de la lista*/
-    justify-content: flex-end; /*justifica los elementos a la derecha*/
-    margin: 0  3rem; /*margen superior e inferior*/    
-}
-/* enlaces de la barra de navegacion*/
-.navigation li {
-    font-size: 1rem;
-    width: 100px; /*ancho de los elementos*/
-    text-align: center;
-    padding: 0.5rem; /*espacio interno*/
-    border-radius: 0.5rem; /*bordes redondeados*/
-    background: var(--btn-bg-color); /* Color de fondo */
-    box-shadow: 0 0 0.5rem #a3a3a3; /* Sombra */
-    transition: background-color 0.3s ease; /* Transición suave */
-}
-
-/* al pasar el cursor por los enlaces de la barra de navegacion cambia el color*/
-.navigation li:hover {
-    background-color: var(--btn-hover-bg-color); /* Color al pasar el cursor */
-}
-
-/*Todos los elementos dentro del contenedor principal*/
-.main-container {
-    display: flex; /*flexbox*/
-    flex-direction: column; /*direccion de los elementos*/
-    align-items: center; /*Agregado clase 5 flexbox*/
-}
-
-/* Estilos generales para las secciones */
+/* ===== ESTRUCTURA PRINCIPAL ===== */
 section {
-    padding: 2rem 0;
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-margin-top: 80px;
 }
 
+.contenedor-seccion {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
 
+/* ===== HEADER ===== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--color-primario);
+    z-index: 1000;
+    box-shadow: var(--sombra);
+    transition: all 0.4s ease;
+}
 
-/*Responsive design*/
-/* Media Queries agrupadas */
+body.dark-mode header {
+    background-color: var(--color-fondo-oscuro);
+}
 
-/* Estilos para pantallas pequeñas, celular de 768px o menos */
+.contenedor-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.titulo-principal {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-style: italic;
+    color: var(--color-titulos);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+body.dark-mode .titulo-principal {
+    color: var(--color-texto-oscuro);
+}
+
+/* ===== BOTÓN MODO OSCURO (SOLUCIÓN FIXED) ===== */
+.boton-modo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--color-botones);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.boton-modo:hover {
+    background: var(--color-botones-hover);
+    transform: scale(1.1);
+}
+
+/* ===== NAVEGACIÓN ===== */
+.menu-principal {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.menu-principal li a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--color-botones);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.menu-principal li a:hover {
+    background-color: var(--color-botones-hover);
+    transform: translateY(-3px);
+}
+
+/* ===== SECCIÓN SOBRE MÍ ===== */
+.sobre-mi {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.foto-perfil {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--sombra);
+    border: 5px solid white;
+}
+
+.contenido-sobre-mi {
+    flex: 1;
+}
+
+.sobre-mi h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-acento);
+}
+
+.sobre-mi p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+}
+
+/* ===== SECCIÓN EXPERIENCIAS ===== */
+.experiencia-item {
+    margin-bottom: 3rem;
+}
+
+.experiencia-item h3 {
+    font-size: 1.8rem;
+    color: var(--color-acento);
+    margin-bottom: 0.5rem;
+}
+
+.experiencia-item p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* ===== SECCIÓN ESTUDIOS ===== */
+.estudios-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.logo-institucion {
+    width: 120px;
+    height: auto;
+}
+
+/* ===== SECCIÓN PROYECTOS ===== */
+.galeria-proyectos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.proyecto {
+    background-color: white;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .proyecto {
+    background-color: #1e1e1e;
+}
+
+.proyecto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.proyecto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.contenido-proyecto {
+    padding: 1.5rem;
+}
+
+.contenido-proyecto h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-acento);
+}
+
+.enlaces-proyecto {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.enlaces-proyecto a {
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-botones);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.enlaces-proyecto a:hover {
+    background-color: var(--color-botones-hover);
+}
+
+/* ===== SECCIÓN CONTACTO ===== */
+.redes-contacto {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.item-contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.item-contacto:hover {
+    transform: translateY(-5px);
+}
+
+.item-contacto img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #a673b1;
+    color: #2c1731;
+    text-align: center;
+    padding: 2rem;
+}
+
+body.dark-mode footer {
+    background-color: #5f069a;
+    color: #f0f0f0;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .titulo {
-        justify-content: center; /*centra el contenido*/
+    .contenedor-header {
+        padding-top: 3rem;
     }
-    .navigation{
-        flex-direction: column; /*cambia la direccion de los elementos*/
-        gap: 1rem; /*espacio entre los elementos*/
-        align-items: center;
+
+    .menu-principal {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sobre-mi {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .foto-perfil {
+        width: 200px;
+        height: 200px;
+    }
+
+    .estudios-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    section {
+        padding: 6rem 1rem;
     }
 }
-
-/* Estilos para pantallas medianas, tablet de 768px a 1024px */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .titulo {
-        justify-content: center; /*centra el contenido*/
-    }
-    .navigation{
-        gap: 2rem; /*espacio entre los elementos*/
-        justify-items: center;
-    }
-}
-
-/* Estilos para pantallas grandes, desktop de 1024px o más */
-@media (min-width: 1024px) {
-    .titulo {
-        justify-content: flex-start; /*justifica el contenido a la izquierda*/
-    }
-    .navigation{
-        gap: 3rem; /*espacio entre los elementos*/
-        justify-items: flex-end; /*justifica los elementos a la derecha*/
-        margin: 0  3rem; /*margen superior e inferior*/
-    } 
-}
-

@@ -1,42 +1,40 @@
-#contacto {
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .contact-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
     text-align: center;
-    margin-top: 10px;
-}
-
-#contacto h2 {
-    margin-bottom: 20px;
-}
-
-#contacto ul {
+  }
+  
+  .contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .contact-item a {
     display: flex;
-    justify-content: center;  /* Centra los elementos horizontalmente */
-    flex-wrap: wrap;          /* Permite que los elementos se muevan a la siguiente línea en pantallas pequeñas */
-    gap: 10px;               /* Espaciado entre los elementos */
-    padding: 0;
-    list-style: none;
-}
-
-#contacto li {
-    display: flex;
-    flex-direction: column;  /* Muestra los elementos en columna (imagen + texto) */
-    align-items: center;     /* Centra los elementos dentro de cada li */
-    width: 120px;            /* Ajusta el ancho de cada item, puedes cambiarlo según el diseño */
-}
-
-.style-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    #contacto ul {
-        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-        align-items: center;     /* Centra los elementos */
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .contact-item img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-links {
+      flex-direction: column;
     }
-
-    #contacto li {
-        width: auto;            /* El ancho se ajustará al contenido */
-        margin-bottom: 20px;    /* Añade margen inferior para los elementos en columna */
-    }
-}
+  }
